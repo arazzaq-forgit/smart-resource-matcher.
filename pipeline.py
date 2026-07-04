@@ -1,10 +1,14 @@
 import sys
+import os
+from dotenv import load_dotenv
 sys.path.insert(0, "scripts")
 
 from retrieve_tfidf import TfidfResourceIndex
 from intent import extract_intent
 
-index = TfidfResourceIndex(csv_path="data/resources_sample.csv")
+load_dotenv()
+CSV_PATH = os.environ.get("RESOURCE_CSV_PATH", "data/resources_sample.csv")
+index = TfidfResourceIndex(csv_path=CSV_PATH)
 
 def get_matches(query: str, top_k: int = 5, user_lat=None, user_lng=None):
     intent = extract_intent(query)
