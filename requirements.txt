@@ -1,0 +1,14 @@
+# --- Quick-start path (no internet needed after install) ---
+pandas
+scikit-learn
+
+# --- "Real" path: sentence-transformers + Chroma (Step 4-5 in the guide) ---
+sentence-transformers
+chromadb
+
+# --- Optional: geocoding real addresses (Step 3) ---
+geopy
+
+# --- Optional: if Person B wants you to expose retrieve() as an API ---
+fastapi
+uvicorn
