@@ -1,9 +1,6 @@
 # --- Quick-start path (no internet needed after install) ---
 pandas
 scikit-learn
-sentence-transformers
-chromadb
-geopy
 fastapi
 uvicorn
 groq
