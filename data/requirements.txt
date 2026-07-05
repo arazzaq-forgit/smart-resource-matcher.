@@ -12,3 +12,5 @@ geopy
 # --- Optional: if Person B wants you to expose retrieve() as an API ---
 fastapi
 uvicorn
+groq
+python-dotenv
