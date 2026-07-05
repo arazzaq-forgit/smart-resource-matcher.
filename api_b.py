@@ -1,3 +1,15 @@
+import math
+
+def clean_nans(obj):
+    """Recursively replace NaN/None-like float values with None so JSON serialization never crashes."""
+    if isinstance(obj, dict):
+        return {k: clean_nans(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [clean_nans(v) for v in obj]
+    if isinstance(obj, float) and math.isnan(obj):
+        return None
+    return obj
+
 import sys
 sys.path.insert(0, "scripts")
 
@@ -55,16 +67,17 @@ def query(payload: QueryRequest):
             "why": extra.get("why", ""),
         })
 
-    return {
+    return clean_nans({
         "intent": intent,
         "results": merged_results,
         "note": explanation.get("note", ""),
-    }
+    })
 
 @app.post("/followup")
 def followup(payload: FollowupRequest):
-    return answer_followup(
+   
+    return clean_nans(answer_followup(
         payload.question,
         payload.previous_results,
         payload.conversation_history,
-    )
+    ))
