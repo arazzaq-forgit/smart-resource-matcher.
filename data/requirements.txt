@@ -1,7 +1,0 @@
-# --- Quick-start path (no internet needed after install) ---
-pandas
-scikit-learn
-fastapi
-uvicorn
-groq
-python-dotenv
